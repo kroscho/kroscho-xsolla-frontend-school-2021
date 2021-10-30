@@ -1,0 +1,73 @@
+.card {
+    width: calc((100% - 40px) / 2);
+    background-color: chocolate;
+    margin-bottom: 40px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    position: relative;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+}
+
+.card-date {
+    position: absolute;
+    display: flex;
+    top: 40px;
+    left: 40px;
+    width: 80px;
+    height: 80px;
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 6px;
+    align-items: center;
+}
+
+.card-date span {
+    font-family: 'Avenir-roman';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 48px;
+    height: 66px;
+    line-height: 66px;
+    color:white;
+    margin: auto;
+}
+
+.card-name {
+    position: absolute;
+    display: flex;
+    bottom: 40px;
+    left: 40px;
+}
+
+.card-name span {
+    font-family: 'Avenir-black';
+    font-weight: 900;
+    font-style: normal;
+    font-size: 48px;
+    height: 66px;
+    line-height: 66px;
+    color:white;
+    margin: auto;
+}
+
+.card-icon {
+    position: absolute;
+    display: flex;
+    top: 40px;
+    right: 40px;
+}
+
+.card-icon img {
+    width: 14px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.card-icon img :hover {
+    background: white;
+}
+

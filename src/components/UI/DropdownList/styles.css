@@ -1,0 +1,21 @@
+.dropdown {
+    margin: 0 20px;
+    width: 200px;
+    height: 50px;
+}
+
+.dropdown select {
+    font-family: 'Avenir-roman';
+    font-weight: 500;
+    font-style: normal;
+    font-size: 24px;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #444444;
+    box-sizing: border-box;
+    line-height: 33px;
+    color: #2E282C;
+    text-align: center;
+}
+
+

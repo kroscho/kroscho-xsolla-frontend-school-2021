@@ -1,0 +1,62 @@
+
+@font-face {
+    font-family: 'Avenir-black';
+    src: url('../fonts/AvenirLTStd-Black.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Avenir-roman';
+    src: url('../fonts/AvenirLTStd-Roman.otf') format('opentype');
+}
+
+body {
+    margin: 0;
+    background-color: #F0F3FF;
+}
+
+.container {
+    margin: 80px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    margin: 100px 100px 40px 100px;
+}
+
+.header {
+    font-family: 'Avenir-black';
+    font-weight: 900;
+    font-style: normal;
+    font-size: 48px;
+    height: 66px;
+    line-height: 66px;
+    color: #2E282C;
+}
+
+.block {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    vertical-align: middle;
+}
+
+.block span{
+    font-family: 'Avenir-roman';
+    font-weight: 500;
+    font-style: normal;
+    font-size: 24px;
+    height: 33px;
+    line-height: 33px;
+    color: #2E282C;
+    margin: auto 0;
+}
+
+.events {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 42px 0 0 0 ;
+}
