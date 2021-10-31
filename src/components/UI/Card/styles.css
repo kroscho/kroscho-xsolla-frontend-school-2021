@@ -1,6 +1,6 @@
 .card {
     width: calc((100% - 40px) / 2);
-    height: 400px;
+    height: calc((100vw - 180px - 40px) / 2 * 0,66666667);
     margin-bottom: 40px;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 6px;
@@ -43,15 +43,32 @@
     left: 40px;
 }
 
-.card-name span {
-    font-family: 'Avenir-black';
-    font-weight: 900;
-    font-style: normal;
-    font-size: 48px;
-    height: 66px;
-    line-height: 66px;
-    color:white;
-    margin: auto;
+@media screen and (min-width: 1590px) {
+    .card-name span {
+        font-size: 30px;
+        font-family: 'Avenir-black';
+        font-weight: 900;
+        font-style: normal;
+        font-size: 48px;
+        height: 66px;
+        line-height: 66px;
+        color:white;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 1590px) {
+    .card-name span {
+        font-size: 30px;
+        font-family: 'Avenir-black';
+        font-weight: 900;
+        font-style: normal;
+        font-size: 30px;
+        height: 66px;
+        line-height: 66px;
+        color:white;
+        margin: auto;
+    }
 }
 
 .card-icon {

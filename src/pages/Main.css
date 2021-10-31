@@ -12,6 +12,7 @@
 body {
     margin: 0;
     background-color: #F0F3FF;
+    min-width: 1024px;
 }
 
 .container {
