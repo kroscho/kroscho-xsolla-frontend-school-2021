@@ -1,11 +1,10 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 
 import './styles.css'
 
-const DropdownList = ({data, items}) => {
+const DropdownList = ({items, changeItem, defaultSelect}) => {
 
-    const [item, setItem] = useState(1);
-    console.log(items)
+    const [item, setItem] = useState(defaultSelect);
 
     const listItems = items.map((item) => {
         return (
@@ -22,7 +21,10 @@ const DropdownList = ({data, items}) => {
         <div className="dropdown">
             <select 
                 value={item} 
-                onChange={(event) => setItem(event.target.value)}
+                onChange={(event) => {
+                    setItem(event.target.value)
+                    changeItem(event.target.value)
+                }}
             >
                 {listItems}
             </select>

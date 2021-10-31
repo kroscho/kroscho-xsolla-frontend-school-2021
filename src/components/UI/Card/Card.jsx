@@ -1,24 +1,31 @@
-import React, {useState, useContext} from 'react';
-import { Context } from '../../../index';
+import React from 'react';
 
 import './styles.css'
 
 import icon_svg from "./icon.svg"
+import icon2_svg from "./icon2.svg"
 
-const Card = () => {
-    const {data} = useContext(Context)
+const Card = ({event, onClick, favList}) => {
+
+    const isFavourite = favList.filter((item => item.id === event.id)).length > 0 ? true : false;
+    const icon = isFavourite ? icon2_svg : icon_svg
 
     return (
         <div className="card">
-            <img src="https://cdn3.xsolla.com/files/uploaded/113250/826adbf1a19ba19e6ba9af9308d2b309.png" alt="image" title="name"></img>
+            <img src={event.image} alt="event" title="name"></img>
             <div className="card-date">
-                <span>20</span>
+                <span>{event.date.substr(0, 2)}</span>
             </div>
             <div className="card-name">
-                <span>Rave Autumn</span>
+                <span>{event.name}</span>
             </div>
             <div className="card-icon">
-                <img className="card-icon-fav" src={icon_svg} alt="icon" title="icon-fav"></img>
+                <img 
+                    className="card-icon-fav"
+                    onClick={() => onClick(event.id)} 
+                    src={icon} 
+                    alt="icon" 
+                    title="icon-fav"></img>
             </div>
         </div>
     )

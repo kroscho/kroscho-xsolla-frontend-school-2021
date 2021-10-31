@@ -60,3 +60,14 @@ body {
     flex-wrap: wrap;
     margin: 42px 0 0 0 ;
 }
+
+.events p{
+    font-family: 'Avenir-roman';
+    font-weight: 500;
+    font-style: normal;
+    font-size: 24px;
+    height: 33px;
+    line-height: 33px;
+    color: #2E282C;
+    margin: auto 0;
+}
