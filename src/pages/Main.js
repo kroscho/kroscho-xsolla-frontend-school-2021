@@ -15,6 +15,8 @@ const Main = () => {
     const [selectCity, setSelectCity] = useState('01')
     const [clickFav, setClickFav] = useState(true)
     const [favouritesList, setFavouritesList] = useState([])
+    const [isFilterFavourite, setIsFilterFavourite] = useState(false)
+    const [isEmptyFavList, setIsEmptyFavList] = useState(false)
 
     // нажатие на избранное, если событие есть в избранном, тогда убираем его оттуда, иначе добавляем
     const onClickFavourite = (id) => {
@@ -25,6 +27,7 @@ const Main = () => {
             setFavouritesList(newFavouritesList)
             // запоминаем в локальном хранилище список избранных
             localStorage.setItem('favouritesList', JSON.stringify(newFavouritesList))
+            setIsEmptyFavList(isFilterFavourite && newFavouritesList.length === 0)
         }
         else {
             setFavouritesList([...favouritesList, event[0]])
@@ -33,16 +36,23 @@ const Main = () => {
         setClickFav(!clickFav)
     }
 
-    const getlistCards = () => {
-        if (filterEvents.length > 0) {
+    // получаем контент в зависимости от фильтра
+    const getContent = () => {
+        if (isEmptyFavList) {
+            return <p>Вы еще не поместили события в избранное!</p>
+        }
+        else if (filterEvents.length > 0) {
             return filterEvents.map((item) => {
                 return (
                     <Card key={item.id} event={item} onClick={onClickFavourite} favList={favouritesList}></Card>
                 )
             })
         }
-        else {
+        else if (!isFilterFavourite){
             return <p>В запрашиваемых городе и месяце нет событий. Выберите другой город или месяц.</p> 
+        }
+        else {
+            return <p>В запрашиваемых городе и месяце нет событий в избранном.</p> 
         }
     }    
 
@@ -57,6 +67,7 @@ const Main = () => {
         })
     }
 
+    // получение списка городов
     const getCitiesList = (events) => {
         let citiList = []
         events.forEach(item => {
@@ -74,8 +85,10 @@ const Main = () => {
         const curCity = cities.filter((item => item.id === selectCity))
         const curMonth = months.filter((item => item.id === selectMonth))
 
+        const eventsList = isFilterFavourite ? favouritesList : events
+
         if (curCity.length !== 0) {
-            events.forEach(item => {
+            eventsList.forEach(item => {
                 if (item.city === curCity[0].name && item.date.substr(3,2) === curMonth[0].id) {
                     filterList.push(item)
                 }
@@ -84,12 +97,18 @@ const Main = () => {
         }
     }
 
+    // событие нажатия фильтр по избранному
+    const handleIsFilterFavourite = () => {
+        setIsEmptyFavList(!isFilterFavourite && favouritesList.length === 0)
+        setIsFilterFavourite(!isFilterFavourite)
+    }
+
     useEffect(() => {
         setIsLoading(false)
         fetchData()
         setFavouritesList(localStorage.getItem('favouritesList') === null ? [] : JSON.parse(localStorage.getItem('favouritesList')))
         setIsLoading(true)
-    }, [selectCity, selectMonth, clickFav])
+    }, [selectCity, selectMonth, clickFav, isFilterFavourite, isEmptyFavList])
 
     useEffect(() => {
         getCitiesList(events)
@@ -114,10 +133,14 @@ const Main = () => {
                         ? <DropdownList items={months} changeItem={setSelectMonth} defaultSelect={selectMonth}></DropdownList>
                         : <span>loading...</span>
                     }
+                    <div className="block-checkbox">
+                        <input type="checkbox" id="isFavFilter" name="isFavFilter" onClick={handleIsFilterFavourite}/>
+                        <label htmlFor="isFavFilter"><span>Фильтр по избранному</span></label>
+                    </div>
                 </div>
                 <div className="events">
                     {isLoading 
-                        ? getlistCards()
+                        ? getContent()
                         : <span>loading...</span>
                     }
                 </div>
