@@ -1,10 +1,23 @@
-.card {
-    width: calc((100% - 40px) / 2);
-    height: calc((100vw - 180px - 40px) / 2 * 0,66666667);
-    margin-bottom: 40px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
-    position: relative;
+@media screen and (min-width: 1024px) {
+    .card {
+        width: calc((100% - 40px) / 2);
+        height: calc((100vw - 180px - 40px) / 2 * 0.66666667);
+        margin-bottom: 40px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 6px;
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .card {
+        width: calc((100% - 40px) / 2);
+        height: 270px;
+        margin-bottom: 40px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 6px;
+        position: relative;
+    }
 }
 
 .card img {
